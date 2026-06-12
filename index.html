@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Verification Portal - Paid</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #3b71ca;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            color: #3b71ca;
+            cursor: pointer;
+        }
+
+        .nav-title {
+            font-weight: bold;
+            color: #333333;
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+
+        .nav-logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .menu-dots {
+            background-color: #3b71ca;
+            color: white;
+            width: 30px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Banner Section */
+        .banner {
+            background-color: #adc4ed;
+            text-align: center;
+            padding: 20px 10px;
+            color: #1c355e;
+        }
+
+        .banner h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .banner p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content Container */
+        .main-container {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Profile Status Card with Perfect Watermark Tone */
+        .status-card {
+            background-color: #ffffff;
+            background-image: linear-gradient(rgba(247, 249, 253, 0.82), rgba(247, 249, 253, 0.82)), url('https://i.postimg.cc/crMwPssQ/logo.jpg'); 
+            background-repeat: repeat;
+            background-size: 130px auto; 
+            width: 100%;
+            max-width: 400px;
+            border-radius: 4px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            text-align: center;
+            position: relative;
+        }
+
+        /* Image Styling */
+        .profile-img-container {
+            width: 180px;
+            height: 180px; 
+            margin: 0 auto 20px auto;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            background-color: #3b71ca; 
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Status Section (PAID + Gold Seal + Checkmark) */
+        .status-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 15px;
+        }
+
+        .status-text-paid {
+            color: #3cb474; /* Exact vibrant green shade from image 394681.jpg */
+            font-size: 2.7rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* Real Gold Seal Image Node */
+        .gold-seal-img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            display: inline-block;
+        }
+
+        /* Exact Green Check Circle with the Clean White Border Ring */
+        .status-circle-green {
+            background-color: #2ecc71;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid #ffffff; /* White outer-ring effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 0 0 1px #2ecc71, 0 2px 5px rgba(0,0,0,0.15); /* Seamless crisp border line */
+        }
+
+        .id-number {
+            color: #2e7d32;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .user-name {
+            color: #2e7d32;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        /* Action Button */
+        .action-btn {
+            background-color: #2b5bc7;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            width: 100%;
+            max-width: 250px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Section */
+        .portal-footer {
+            background: linear-gradient(to bottom, #00334e, #001f33);
+            color: #ffffff;
+            text-align: center;
+            padding: 25px 15px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .admin-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        .credits-text {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+            font-size: 0.8rem;
+            color: #b0c4de;
+        }
+
+        .highlight-text {
+            color: #ffcc00; 
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="menu-icon">&#9776;</span>
+            <div class="nav-title">RMU Online<br>Exams</div>
+        </div>
+        <div class="nav-logo">
+            <img src="https://i.postimg.cc/crMwPssQ/logo.jpg" alt="Logo">
+        </div>
+        <div class="menu-dots">&#8942;</div>
+    </nav>
+
+    <header class="banner">
+        <h1>Students Fee Status</h1>
+        <p>Check Students Fees Status Here</p>
+    </header>
+
+    <main class="main-container">
+        <div class="status-card">
+            
+            <div class="profile-img-container">
+                <img src="https://i.postimg.cc/KRrBCZZR/profile.jpg" alt="Student Profile Picture">
+            </div>
+
+            <div class="status-wrapper">
+                <span class="status-text-paid">PAID</span>
+                <img class="gold-seal-img" src="https://i.postimg.cc/crMwPssQ/logo.jpg" alt="Seal">
+                <div class="status-circle-green">&#10004;</div>
+            </div>
+
+            <div class="id-number">BME0000428</div>
+            <div class="user-name">Jerriscot Essel</div>
+
+            <button class="action-btn">Next Scan</button>
+            
+        </div>
+    </main>
+
+    <footer class="portal-footer">
+        <p>For administrative assistance, email</p>
+        <div class="admin-box">admin.exams@rmu.edu.gh</div>
+        
+        <div class="credits-text">
+            Developed by <span class="highlight-text">Ebenezer Teigaga</span><br>
+            (ebenezer.teigaga@rmu.edu.gh) &bull; Copyright &copy; 2026 RMU. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
